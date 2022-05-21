@@ -16,17 +16,20 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 @Entity
 @Table(name="usuario")
 public class Usuario {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;
+	private long id;
 	
 	@NotNull(message="The name is required")
 	private String name;
 	
+	@Schema(example = "email@email.com.br")
 	@NotNull(message="The user is required")
 	@Email(message = "O atributo Usuário deve ser um email válido!")
 	private String user;
@@ -46,7 +49,7 @@ public class Usuario {
 	private List<Postagem> postagem;
 
 
-	public Usuario(Long id, String name, String user,String password,String photo,String type) {
+	public Usuario(long id, String name, String user,String password,String photo,String type) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -60,11 +63,11 @@ public class Usuario {
 		super();
 	}
 
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
